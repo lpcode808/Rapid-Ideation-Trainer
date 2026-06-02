@@ -6,7 +6,7 @@ export function RoundIndicator() {
   const rounds = [1, 2, 3, 4];
   
   const getRoundColor = (round: number, isActive: boolean) => {
-    if (!isActive) return 'border-gray-300 text-gray-400';
+    if (!isActive) return 'border-[hsl(var(--border))] bg-white/55 text-foreground/35 dark:bg-white/6 dark:text-white/35';
     
     switch(round) {
       case 1: return 'bg-round-1 border-round-1 text-white';
@@ -19,11 +19,11 @@ export function RoundIndicator() {
   
   const getCurrentRoundAccentColor = () => {
     switch(state.currentRound) {
-      case 1: return 'bg-round-1/10 text-round-1';
-      case 2: return 'bg-round-2/10 text-round-2';
-      case 3: return 'bg-round-3/10 text-round-3';
-      case 4: return 'bg-round-4/10 text-round-4';
-      default: return 'bg-ideation-primary/10 text-ideation-primary';
+      case 1: return 'bg-[hsl(var(--round-1-color)/0.12)] text-round-1';
+      case 2: return 'bg-[hsl(var(--round-2-color)/0.12)] text-round-2';
+      case 3: return 'bg-[hsl(var(--round-3-color)/0.12)] text-round-3';
+      case 4: return 'bg-[hsl(var(--round-4-color)/0.12)] text-round-4';
+      default: return 'bg-[hsl(var(--ideation-primary)/0.12)] text-ideation-primary';
     }
   };
   
@@ -39,11 +39,11 @@ export function RoundIndicator() {
 
   return (
     <div className="mb-6">
-      <div className="flex items-center justify-center space-x-4 mb-4">
+      <div className="mb-4 flex items-center justify-center space-x-3">
         {rounds.map((round) => (
           <div
             key={round}
-            className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300 ${
+            className={`flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm transition-all duration-300 ${
               getRoundColor(round, round <= state.currentRound)
             }`}
           >
@@ -53,10 +53,10 @@ export function RoundIndicator() {
       </div>
       
       <div className="text-center">
-        <div className="text-lg font-semibold text-ideation-secondary mb-1">
+        <div className="mb-1 text-lg font-semibold text-ideation-secondary dark:text-white">
           Round {state.currentRound} of 4
         </div>
-        <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${getCurrentRoundAccentColor()}`}>
+        <div className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-semibold ${getCurrentRoundAccentColor()}`}>
           <div className={`w-2 h-2 rounded-full mr-2 ${getCurrentRoundDotColor()}`} />
           <span>{state.currentCategory}</span>
         </div>

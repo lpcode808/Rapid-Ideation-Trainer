@@ -83,10 +83,10 @@ export function ActionButtons() {
 
 
   return (
-    <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-200">
+    <div className="flex flex-col gap-3 border-t border-[hsl(var(--border))] pt-6 sm:flex-row">
       <button
         onClick={handleCopyToClipboard}
-        className="flex-1 px-6 py-3 bg-ideation-accent text-white rounded-lg hover:bg-ideation-accent/90 transition-colors flex items-center justify-center space-x-2 font-medium"
+        className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ideation-accent px-6 py-3.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
       >
         <Copy className="w-4 h-4" />
         <span className="hidden sm:inline">Copy to Clipboard</span>
@@ -95,7 +95,7 @@ export function ActionButtons() {
       
       <button
         onClick={handleDownload}
-        className="px-6 py-3 bg-ideation-secondary text-white dark:bg-gray-700 dark:text-white rounded-lg hover:bg-ideation-secondary/90 dark:hover:bg-gray-600 transition-colors flex items-center justify-center space-x-2 font-medium"
+        className="flex items-center justify-center gap-2 rounded-full bg-ideation-secondary px-6 py-3.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
       >
         <Download className="w-4 h-4" />
         <span>Download .md</span>

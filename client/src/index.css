@@ -1,81 +1,181 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 98%;
-  --foreground: 20 14.3% 4.1%;
-  --muted: 60 4.8% 95.9%;
-  --muted-foreground: 25 5.3% 44.7%;
+  --font-display: "Urbanist", system-ui, -apple-system, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --background: 40 100% 96%;
+  --foreground: 214 100% 8%;
+  --muted: 42 64% 93%;
+  --muted-foreground: 214 26% 38%;
   --popover: 0 0% 100%;
-  --popover-foreground: 20 14.3% 4.1%;
+  --popover-foreground: 214 100% 8%;
   --card: 0 0% 100%;
-  --card-foreground: 20 14.3% 4.1%;
-  --border: 20 5.9% 90%;
-  --input: 20 5.9% 90%;
-  --primary: 207 90% 54%;
-  --primary-foreground: 211 100% 99%;
-  --secondary: 60 4.8% 95.9%;
-  --secondary-foreground: 24 9.8% 10%;
-  --accent: 60 4.8% 95.9%;
-  --accent-foreground: 24 9.8% 10%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 60 9.1% 97.8%;
-  --ring: 20 14.3% 4.1%;
-  --radius: 0.5rem;
-  
-  /* Custom colors for the ideation trainer */
-  --ideation-primary: 259 94% 51%; /* Purple default #6366F1 */
-  --ideation-secondary: 0 0% 26%; /* #424242 */
-  --ideation-accent: 122 39% 49%; /* #4CAF50 */
-  --ideation-warning: 36 100% 50%; /* #FF9800 */
-  --ideation-surface: 0 0% 100%; /* #FFFFFF */
-  --ideation-background: 0 0% 98%; /* #FAFAFA */
-  
-  /* Round-specific colors */
-  --round-1-color: 0 84% 60%; /* Red #EF4444 */
-  --round-2-color: 217 91% 60%; /* Blue #3B82F6 */
-  --round-3-color: 330 81% 60%; /* Pink #EC4899 */
-  --round-4-color: 142 76% 36%; /* Green #059669 */
+  --card-foreground: 214 100% 8%;
+  --border: 214 46% 88%;
+  --input: 214 46% 88%;
+  --primary: 214 100% 22%;
+  --primary-foreground: 40 100% 96%;
+  --secondary: 184 100% 34%;
+  --secondary-foreground: 40 100% 96%;
+  --accent: 72 52% 55%;
+  --accent-foreground: 214 100% 8%;
+  --destructive: 15 74% 45%;
+  --destructive-foreground: 40 100% 96%;
+  --ring: 184 100% 34%;
+  --radius: 1rem;
+
+  --ideation-primary: 214 100% 22%;
+  --ideation-secondary: 214 100% 8%;
+  --ideation-accent: 184 100% 34%;
+  --ideation-warning: 15 74% 45%;
+  --ideation-surface: 0 0% 100%;
+  --ideation-background: 40 100% 96%;
+
+  --round-1-color: 214 100% 22%;
+  --round-2-color: 184 100% 34%;
+  --round-3-color: 15 74% 45%;
+  --round-4-color: 72 52% 55%;
 }
 
 .dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --primary: 207 90% 54%;
-  --primary-foreground: 211 100% 99%;
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --ring: 240 4.9% 83.9%;
-  --radius: 0.5rem;
+  --font-display: "Urbanist", system-ui, -apple-system, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
 
-  /* Dark mode custom colors for the ideation trainer */
-  --ideation-primary: 259 94% 65%; /* Brighter purple for dark mode #8B5CF6 */
-  --ideation-secondary: 0 0% 90%; /* Light text #E5E5E5 */
-  --ideation-accent: 122 39% 60%; /* Brighter green for dark mode #4ADE80 */
-  --ideation-warning: 36 100% 60%; /* Brighter orange for dark mode #FB923C */
-  --ideation-surface: 240 10% 8%; /* Dark surface #141B2D */
-  --ideation-background: 240 10% 4%; /* Very dark background #0A0E1A */
-  
-  /* Dark mode round-specific colors - brighter for visibility */
-  --round-1-color: 0 84% 70%; /* Brighter red #F87171 */
-  --round-2-color: 217 91% 70%; /* Brighter blue #60A5FA */
-  --round-3-color: 330 81% 70%; /* Brighter pink #F472B6 */
-  --round-4-color: 142 76% 50%; /* Adjusted green #10B981 */
+  --background: 214 100% 8%;
+  --foreground: 40 100% 96%;
+  --muted: 214 42% 13%;
+  --muted-foreground: 40 100% 80%;
+  --popover: 214 100% 10%;
+  --popover-foreground: 40 100% 96%;
+  --card: 214 78% 12%;
+  --card-foreground: 40 100% 96%;
+  --border: 214 42% 18%;
+  --input: 214 42% 18%;
+  --primary: 40 100% 96%;
+  --primary-foreground: 214 100% 8%;
+  --secondary: 184 100% 34%;
+  --secondary-foreground: 40 100% 96%;
+  --accent: 72 52% 55%;
+  --accent-foreground: 214 100% 8%;
+  --destructive: 15 74% 56%;
+  --destructive-foreground: 40 100% 96%;
+  --ring: 184 100% 40%;
+
+  --ideation-primary: 40 100% 96%;
+  --ideation-secondary: 40 100% 96%;
+  --ideation-accent: 184 100% 46%;
+  --ideation-warning: 15 74% 56%;
+  --ideation-surface: 214 78% 12%;
+  --ideation-background: 214 100% 8%;
 }
 
 @layer base {
@@ -83,8 +183,20 @@
     @apply border-border;
   }
 
+  html {
+    background: hsl(var(--background));
+  }
+
   body {
-    @apply font-sans antialiased bg-[hsl(var(--ideation-background))] text-foreground;
+    @apply antialiased;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    color: hsl(var(--foreground));
+    background:
+      radial-gradient(circle at 0% 0%, rgba(7, 168, 168, 0.16), transparent 28%),
+      radial-gradient(circle at 100% 10%, rgba(175, 205, 83, 0.18), transparent 24%),
+      radial-gradient(circle at 50% 100%, rgba(200, 83, 29, 0.10), transparent 28%),
+      hsl(var(--background));
   }
 }
 
@@ -137,6 +249,15 @@
   border-color: hsl(var(--ideation-accent));
 }
 
+.shadow-branded {
+  box-shadow: 0 18px 60px rgba(0, 19, 41, 0.12);
+}
+
+.surface-bright {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+}
+
 /* Round-specific color utilities */
 .bg-round-1 {
   background-color: hsl(var(--round-1-color));
@@ -154,7 +275,6 @@
   background-color: hsl(var(--round-4-color));
 }
 
-/* Gradient utilities for progress bar */
 .from-round-1 {
   --tw-gradient-from: hsl(var(--round-1-color));
   --tw-gradient-to: hsl(var(--round-1-color) / 0);
@@ -228,7 +348,16 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Natural bouncing ball animation */
@@ -247,10 +376,4 @@ body {
 
 .natural-bounce {
   animation: natural-bounce 2s ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .natural-bounce {
-    animation: none;
-  }
 }

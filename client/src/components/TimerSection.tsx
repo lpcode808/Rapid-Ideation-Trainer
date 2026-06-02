@@ -26,17 +26,19 @@ export function TimerSection() {
 
   return (
     <div className="mb-8">
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center space-x-4">
-          <div className="text-2xl font-bold text-ideation-secondary">
+          <div className="font-display text-3xl font-extrabold tracking-tight text-ideation-primary">
             {formatTime(state.sessionTime)}
           </div>
-          <div className="text-sm text-ideation-secondary/70">Session Time</div>
+          <div className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground/55">
+            Session time
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={handleToggleTimer}
-            className="px-4 py-2 bg-ideation-primary text-white rounded-lg hover:bg-ideation-primary/90 transition-colors flex items-center space-x-2"
+            className="inline-flex items-center gap-2 rounded-full bg-ideation-primary px-4 py-2.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
           >
             {state.isRunning ? (
               <Pause className="w-4 h-4" />
@@ -48,7 +50,7 @@ export function TimerSection() {
           {state.currentRound < 4 && (
             <button
               onClick={skipToNextRound}
-              className="px-3 py-2 bg-ideation-warning text-white rounded-lg hover:bg-ideation-warning/90 transition-colors flex items-center space-x-1"
+              className="inline-flex items-center gap-1.5 rounded-full bg-ideation-warning px-3.5 py-2.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
               title="Skip to next round (testing)"
             >
               <SkipForward className="w-4 h-4" />
@@ -57,7 +59,7 @@ export function TimerSection() {
           )}
           <button
             onClick={resetSession}
-            className="px-4 py-2 bg-ideation-secondary text-white dark:bg-gray-600 dark:text-white rounded-lg hover:bg-ideation-secondary/90 dark:hover:bg-gray-500 transition-colors"
+            className="inline-flex items-center justify-center rounded-full border border-[hsl(var(--border))] bg-white/80 px-4 py-2.5 text-ideation-secondary shadow-sm transition-all hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-white"
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -65,7 +67,7 @@ export function TimerSection() {
       </div>
       
       {/* Progress Bar with Round Markers */}
-      <div className="relative w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-2">
+      <div className="relative mb-2 h-3 w-full rounded-full bg-black/10 dark:bg-white/12">
         <div 
           className={`bg-gradient-to-r ${getProgressBarColor()} h-3 rounded-full transition-all duration-300 ease-out`}
           style={{ width: `${progress}%` }}
@@ -80,11 +82,11 @@ export function TimerSection() {
           />
         ))}
       </div>
-      <div className="flex justify-between text-xs text-ideation-secondary/60">
+      <div className="flex justify-between text-xs font-semibold text-foreground/45">
         <span>0:00</span>
-        <span className="text-xs text-ideation-secondary/40">1:00</span>
-        <span className="text-xs text-ideation-secondary/40">2:00</span>
-        <span className="text-xs text-ideation-secondary/40">3:00</span>
+        <span>1:00</span>
+        <span>2:00</span>
+        <span>3:00</span>
         <span>4:00</span>
       </div>
     </div>
