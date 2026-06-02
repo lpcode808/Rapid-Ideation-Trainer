@@ -20,12 +20,12 @@ export function PromptDisplay() {
   }
 
   return (
-    <div className={`relative mb-6 overflow-hidden rounded-[1.5rem] border-l-4 ${getCurrentRoundBorderColor()} bg-[linear-gradient(135deg,rgba(255,255,255,0.95),rgba(255,247,235,0.82))] p-6 shadow-sm dark:bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))]`}>
+    <div className={`relative mb-6 overflow-hidden rounded-[1.5rem] border-l-4 ${getCurrentRoundBorderColor()} bg-[linear-gradient(135deg,rgba(255,255,255,0.95),rgba(255,247,235,0.82))] p-6 shadow-sm dark:bg-[linear-gradient(135deg,rgba(4,11,22,0.96),rgba(0,19,41,0.88))]`}>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(7,168,168,0.12),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(175,205,83,0.10),transparent_24%)]" />
 
       <button
         onClick={shufflePrompt}
-        className="absolute right-4 top-4 rounded-md p-2 text-foreground/45 transition-all hover:bg-white/70 hover:text-ideation-primary dark:hover:bg-white/10 dark:hover:text-white"
+        className="absolute right-4 top-4 rounded-md p-2 text-foreground/45 transition-all hover:bg-white/70 hover:text-ideation-primary dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"
         title="Get a new prompt"
       >
         <Shuffle className="w-4 h-4" />

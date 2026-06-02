@@ -258,6 +258,11 @@
   backdrop-filter: blur(10px);
 }
 
+.dark .surface-bright {
+  background: rgba(4, 11, 22, 0.92);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
 /* Round-specific color utilities */
 .bg-round-1 {
   background-color: hsl(var(--round-1-color));

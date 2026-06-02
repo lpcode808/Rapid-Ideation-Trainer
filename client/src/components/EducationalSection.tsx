@@ -2,7 +2,7 @@ import { Brain, Target, Clock, Lightbulb } from 'lucide-react';
 
 export function EducationalSection() {
   return (
-    <div className="rounded-[2rem] border border-[hsl(var(--border))] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,247,235,0.76))] p-6 shadow-sm dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03))] md:p-8">
+    <div className="rounded-[2rem] border border-[hsl(var(--border))] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,247,235,0.76))] p-6 shadow-sm dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(4,11,22,0.94),rgba(0,19,41,0.86))] md:p-8">
       <div className="mb-8 text-center">
         <h2 className="font-display text-2xl font-extrabold tracking-tight text-ideation-primary md:text-3xl">
           Melt Away Paralysis: The Science Behind Rapid Ideation
@@ -13,12 +13,12 @@ export function EducationalSection() {
       </div>
 
       <div className="mb-8 grid gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border border-[hsl(var(--border))] bg-white/85 p-6 shadow-sm dark:border-white/10 dark:bg-white/6">
+        <div className="rounded-2xl border border-[hsl(var(--border))] bg-white/85 p-6 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
           <div className="mb-4 flex items-center">
             <Target className="mr-3 text-ideation-accent" size={24} />
             <h3 className="text-xl font-semibold text-ideation-secondary dark:text-white">The Core Formula</h3>
           </div>
-          <div className="mb-4 rounded-2xl bg-[rgba(7,168,168,0.10)] p-4 dark:bg-white/8">
+          <div className="mb-4 rounded-2xl bg-[rgba(7,168,168,0.10)] p-4 dark:bg-[rgba(255,255,255,0.08)]">
             <p className="text-center font-mono text-base text-ideation-primary dark:text-white">
               Speed of Thought = <span className="font-bold">Max Ideas</span> / <span className="font-bold">Min Time</span>
             </p>
@@ -29,7 +29,7 @@ export function EducationalSection() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-[hsl(var(--border))] bg-white/85 p-6 shadow-sm dark:border-white/10 dark:bg-white/6">
+        <div className="rounded-2xl border border-[hsl(var(--border))] bg-white/85 p-6 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
           <div className="mb-4 flex items-center">
             <Brain className="mr-3 text-ideation-warning" size={24} />
             <h3 className="text-xl font-semibold text-ideation-secondary dark:text-white">Breaking Through Blocks</h3>
@@ -60,7 +60,7 @@ export function EducationalSection() {
         </div>
         
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl border border-[rgba(0,53,113,0.16)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-white/6">
+          <div className="rounded-2xl border border-[rgba(0,53,113,0.16)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
             <div className="mb-3 text-center">
               <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-ideation-primary font-bold text-white">1</div>
               <h4 className="font-semibold text-ideation-primary">Point</h4>
@@ -71,7 +71,7 @@ export function EducationalSection() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-[rgba(7,168,168,0.18)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-white/6">
+          <div className="rounded-2xl border border-[rgba(7,168,168,0.18)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
             <div className="mb-3 text-center">
               <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-ideation-accent font-bold text-white">2</div>
               <h4 className="font-semibold text-ideation-accent">Line</h4>
@@ -82,7 +82,7 @@ export function EducationalSection() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-[rgba(200,83,29,0.18)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-white/6">
+          <div className="rounded-2xl border border-[rgba(200,83,29,0.18)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
             <div className="mb-3 text-center">
               <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-ideation-warning font-bold text-white">3</div>
               <h4 className="font-semibold text-ideation-warning">Square</h4>
@@ -93,7 +93,7 @@ export function EducationalSection() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-[rgba(175,205,83,0.20)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-white/6">
+          <div className="rounded-2xl border border-[rgba(175,205,83,0.20)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
             <div className="mb-3 text-center">
               <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-ideation-accent font-bold text-white">4</div>
               <h4 className="font-semibold text-[hsl(var(--accent))]">Cube</h4>
@@ -106,7 +106,7 @@ export function EducationalSection() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-[hsl(var(--border))] bg-white/85 p-6 shadow-sm dark:border-white/10 dark:bg-white/6">
+      <div className="rounded-2xl border border-[hsl(var(--border))] bg-white/85 p-6 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
         <div className="mb-4 flex items-center">
           <Clock className="mr-3 text-ideation-accent" size={24} />
           <h3 className="text-xl font-semibold text-ideation-secondary dark:text-white">Practice Benchmarks</h3>

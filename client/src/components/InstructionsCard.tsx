@@ -2,7 +2,7 @@ import { Info } from 'lucide-react';
 
 export function InstructionsCard() {
   return (
-    <div className="mb-6 rounded-[1.5rem] border border-[hsl(var(--border))] bg-white/84 p-6 shadow-sm dark:border-white/10 dark:bg-white/6">
+    <div className="mb-6 rounded-[1.5rem] border border-[hsl(var(--border))] bg-white/84 p-6 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
       <h3 className="mb-4 flex items-center text-lg font-semibold text-ideation-secondary dark:text-white">
         <Info className="mr-2 text-ideation-primary" />
         How It Works

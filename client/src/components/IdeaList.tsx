@@ -36,7 +36,7 @@ export function IdeaList() {
       
       <div className="max-h-64 space-y-4 overflow-y-auto pr-1">
         {completedRounds.map(({ round, category, ideas }) => (
-          <div key={round} className="rounded-2xl border border-[hsl(var(--border))] bg-white/80 p-4 shadow-sm dark:border-white/10 dark:bg-white/6">
+          <div key={round} className="rounded-2xl border border-[hsl(var(--border))] bg-white/80 p-4 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
             <div className="mb-3 flex items-center justify-between">
               <h4 className="flex items-center font-medium text-ideation-secondary dark:text-white">
                 <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-ideation-primary text-xs font-semibold text-white">
@@ -54,7 +54,7 @@ export function IdeaList() {
                 {ideas.map((idea, index) => (
                   <div
                     key={idea.id}
-                    className="flex items-start space-x-3 rounded-xl border-l-2 border-ideation-accent/30 bg-[rgba(255,255,255,0.8)] p-3 dark:bg-white/5"
+                    className="flex items-start space-x-3 rounded-xl border-l-2 border-ideation-accent/30 bg-[rgba(255,255,255,0.8)] p-3 dark:bg-[rgba(255,255,255,0.05)]"
                   >
                     <span className="mt-0.5 w-6 flex-shrink-0 font-mono text-xs text-foreground/55 dark:text-white/60">
                       {index + 1}.
@@ -72,8 +72,8 @@ export function IdeaList() {
         ))}
         
         {hasNextRounds && (
-          <div className="rounded-2xl border-2 border-dashed border-[hsl(var(--border))] bg-[rgba(255,255,255,0.45)] p-4">
-            <div className="flex items-center justify-center py-4 text-foreground/40">
+          <div className="rounded-2xl border-2 border-dashed border-[hsl(var(--border))] bg-[rgba(255,255,255,0.45)] p-4 dark:border-white/12 dark:bg-[rgba(255,255,255,0.04)]">
+            <div className="flex items-center justify-center py-4 text-foreground/40 dark:text-white/35">
               <Clock className="mr-2" />
               <span>
                 {state.currentRound < 4 
@@ -86,8 +86,8 @@ export function IdeaList() {
         )}
         
         {completedRounds.length === 0 && !hasNextRounds && (
-          <div className="rounded-2xl bg-white/70 p-8 shadow-sm dark:bg-white/6">
-            <div className="text-center text-foreground/40">
+          <div className="rounded-2xl bg-white/70 p-8 shadow-sm dark:bg-[rgba(255,255,255,0.05)]">
+            <div className="text-center text-foreground/40 dark:text-white/35">
               <Lightbulb className="mx-auto mb-2 w-8 h-8" />
               <p>Start the timer and begin adding ideas!</p>
             </div>

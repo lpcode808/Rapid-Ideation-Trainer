@@ -65,7 +65,7 @@ export default function Home() {
           className={`relative overflow-hidden rounded-[2rem] border shadow-branded ${
             state.isCompleted
               ? 'border-white/12 bg-[linear-gradient(180deg,rgba(0,19,41,0.92),rgba(0,53,113,0.88))] text-white'
-              : 'surface-bright border-[hsl(var(--border))]'
+              : 'surface-bright border-[hsl(var(--border))] dark:border-white/10 dark:bg-[rgba(4,11,22,0.92)]'
           }`}
         >
           <div
@@ -94,7 +94,7 @@ export default function Home() {
         )}
 
         <div className="mt-8 mb-8">
-          <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-[hsl(var(--border))] bg-white/70 shadow-branded">
+          <div className="relative w-full overflow-hidden rounded-[1.5rem] border border-[hsl(var(--border))] bg-white/70 shadow-branded dark:border-white/10 dark:bg-white/5">
             <div style={{ paddingBottom: '56.25%' }} />
             <iframe
               className="absolute inset-0 h-full w-full"
