@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 98%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  
+  /* Custom colors for the ideation trainer */
+  --ideation-primary: 259 94% 51%; /* Purple default #6366F1 */
+  --ideation-secondary: 0 0% 26%; /* #424242 */
+  --ideation-accent: 122 39% 49%; /* #4CAF50 */
+  --ideation-warning: 36 100% 50%; /* #FF9800 */
+  --ideation-surface: 0 0% 100%; /* #FFFFFF */
+  --ideation-background: 0 0% 98%; /* #FAFAFA */
+  
+  /* Round-specific colors */
+  --round-1-color: 0 84% 60%; /* Red #EF4444 */
+  --round-2-color: 217 91% 60%; /* Blue #3B82F6 */
+  --round-3-color: 330 81% 60%; /* Pink #EC4899 */
+  --round-4-color: 142 76% 36%; /* Green #059669 */
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+
+  /* Dark mode custom colors for the ideation trainer */
+  --ideation-primary: 259 94% 65%; /* Brighter purple for dark mode #8B5CF6 */
+  --ideation-secondary: 0 0% 90%; /* Light text #E5E5E5 */
+  --ideation-accent: 122 39% 60%; /* Brighter green for dark mode #4ADE80 */
+  --ideation-warning: 36 100% 60%; /* Brighter orange for dark mode #FB923C */
+  --ideation-surface: 240 10% 8%; /* Dark surface #141B2D */
+  --ideation-background: 240 10% 4%; /* Very dark background #0A0E1A */
+  
+  /* Dark mode round-specific colors - brighter for visibility */
+  --round-1-color: 0 84% 70%; /* Brighter red #F87171 */
+  --round-2-color: 217 91% 70%; /* Brighter blue #60A5FA */
+  --round-3-color: 330 81% 70%; /* Brighter pink #F472B6 */
+  --round-4-color: 142 76% 50%; /* Adjusted green #10B981 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-[hsl(var(--ideation-background))] text-foreground;
+  }
+}
+
+/* Custom utility classes for the ideation trainer */
+.bg-ideation-primary {
+  background-color: hsl(var(--ideation-primary));
+}
+
+.bg-ideation-secondary {
+  background-color: hsl(var(--ideation-secondary));
+}
+
+.bg-ideation-accent {
+  background-color: hsl(var(--ideation-accent));
+}
+
+.bg-ideation-warning {
+  background-color: hsl(var(--ideation-warning));
+}
+
+.bg-ideation-surface {
+  background-color: hsl(var(--ideation-surface));
+}
+
+.text-ideation-primary {
+  color: hsl(var(--ideation-primary));
+}
+
+.text-ideation-secondary {
+  color: hsl(var(--ideation-secondary));
+}
+
+.text-ideation-accent {
+  color: hsl(var(--ideation-accent));
+}
+
+.text-ideation-warning {
+  color: hsl(var(--ideation-warning));
+}
+
+.border-ideation-primary {
+  border-color: hsl(var(--ideation-primary));
+}
+
+.border-ideation-secondary {
+  border-color: hsl(var(--ideation-secondary));
+}
+
+.border-ideation-accent {
+  border-color: hsl(var(--ideation-accent));
+}
+
+/* Round-specific color utilities */
+.bg-round-1 {
+  background-color: hsl(var(--round-1-color));
+}
+
+.bg-round-2 {
+  background-color: hsl(var(--round-2-color));
+}
+
+.bg-round-3 {
+  background-color: hsl(var(--round-3-color));
+}
+
+.bg-round-4 {
+  background-color: hsl(var(--round-4-color));
+}
+
+/* Gradient utilities for progress bar */
+.from-round-1 {
+  --tw-gradient-from: hsl(var(--round-1-color));
+  --tw-gradient-to: hsl(var(--round-1-color) / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-round-1 {
+  --tw-gradient-to: hsl(var(--round-1-color));
+}
+
+.from-round-2 {
+  --tw-gradient-from: hsl(var(--round-2-color));
+  --tw-gradient-to: hsl(var(--round-2-color) / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-round-2 {
+  --tw-gradient-to: hsl(var(--round-2-color));
+}
+
+.from-round-3 {
+  --tw-gradient-from: hsl(var(--round-3-color));
+  --tw-gradient-to: hsl(var(--round-3-color) / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-round-3 {
+  --tw-gradient-to: hsl(var(--round-3-color));
+}
+
+.from-round-4 {
+  --tw-gradient-from: hsl(var(--round-4-color));
+  --tw-gradient-to: hsl(var(--round-4-color) / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-round-4 {
+  --tw-gradient-to: hsl(var(--round-4-color));
+}
+
+.text-round-1 {
+  color: hsl(var(--round-1-color));
+}
+
+.text-round-2 {
+  color: hsl(var(--round-2-color));
+}
+
+.text-round-3 {
+  color: hsl(var(--round-3-color));
+}
+
+.text-round-4 {
+  color: hsl(var(--round-4-color));
+}
+
+.border-round-1 {
+  border-color: hsl(var(--round-1-color));
+}
+
+.border-round-2 {
+  border-color: hsl(var(--round-2-color));
+}
+
+.border-round-3 {
+  border-color: hsl(var(--round-3-color));
+}
+
+.border-round-4 {
+  border-color: hsl(var(--round-4-color));
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Natural bouncing ball animation */
+@keyframes natural-bounce {
+  0% { transform: translateY(0px); }
+  10% { transform: translateY(-60px); }
+  20% { transform: translateY(0px); }
+  30% { transform: translateY(-40px); }
+  40% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  60% { transform: translateY(0px); }
+  70% { transform: translateY(-10px); }
+  80% { transform: translateY(0px); }
+  100% { transform: translateY(0px); }
+}
+
+.natural-bounce {
+  animation: natural-bounce 2s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .natural-bounce {
+    animation: none;
+  }
+}

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.DS_Store
+
+# Replit export baggage and local notes
+.playwright-mcp/
+attached_assets/
+generated-icon.png
+dream.md
+log.md
+replit.md
+
+# Replit server scaffolding not used for Pages deploy
+server/
+shared/
+drizzle.config.ts
+components.json
