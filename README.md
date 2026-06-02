@@ -4,11 +4,12 @@ Fast Lightning Outburst Workout is a small React + Vite app for timed ideation r
 
 ## Deploy
 
-This repo is set up for GitHub Pages with a GitHub Actions workflow in [`.github/workflows/deploy.yml`](/Users/justinlai/Coding/Rapid-Ideation-Trainer/.github/workflows/deploy.yml).
+This repo is set up to ship as a plain static site on GitHub Pages.
 
-1. Push `main` to GitHub.
-2. In the GitHub repo settings, set Pages to **GitHub Actions** as the source.
-3. Future pushes to `main` will rebuild and redeploy the site.
+1. Build the app with `npm run build`.
+2. Copy the built files from `dist/` to the repo root.
+3. Push `main` to GitHub.
+4. In repo settings, set Pages to deploy from the `main` branch root if needed.
 
 ## Local development
 
