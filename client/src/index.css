@@ -143,6 +143,8 @@
   --round-2-color: 184 100% 34%;
   --round-3-color: 15 74% 45%;
   --round-4-color: 72 52% 55%;
+  /* Lime is too light for text on cream (1.8:1); darker olive for labels (~5:1). */
+  --round-4-text: 72 60% 28%;
 }
 
 .dark {
@@ -179,6 +181,7 @@
 
   /* Round 1 navy disappears on the dark surface; lift it. */
   --round-1-color: 214 85% 58%;
+  --round-4-text: 72 52% 55%;
 }
 
 @layer base {
@@ -336,7 +339,7 @@
 }
 
 .text-round-4 {
-  color: hsl(var(--round-4-color));
+  color: hsl(var(--round-4-text));
 }
 
 .border-round-1 {
