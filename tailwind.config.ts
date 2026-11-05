@@ -5,6 +5,15 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      // Non-default steps used across components (e.g. dark:bg-white/6).
+      // Without these, Tailwind silently drops the class.
+      opacity: {
+        "6": "0.06",
+        "12": "0.12",
+        "42": "0.42",
+        "78": "0.78",
+        "84": "0.84",
+      },
       fontFamily: {
         display: ['var(--font-display)'],
         body: ['var(--font-body)'],

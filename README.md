@@ -21,4 +21,4 @@ npm run dev
 ## Notes
 
 - Session state is stored in the browser with `localStorage`.
-- Prompt data is bundled from [`client/public/prompts.json`](/Users/justinlai/Coding/Rapid-Ideation-Trainer/client/public/prompts.json).
+- Prompt data is bundled from [`client/public/prompts.json`](client/public/prompts.json).

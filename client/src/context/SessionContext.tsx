@@ -42,6 +42,7 @@ type SessionAction =
   | { type: 'RESET_SESSION' }
   | { type: 'SET_CURRENT_IDEA'; payload: string }
   | { type: 'ADD_IDEA'; payload: string }
+  | { type: 'REMOVE_IDEA'; payload: string }
   | { type: 'ADVANCE_ROUND' }
   | { type: 'SKIP_TO_NEXT_ROUND' }
   | { type: 'SHUFFLE_PROMPT' }
@@ -49,6 +50,12 @@ type SessionAction =
   | { type: 'LOAD_SESSION'; payload: Partial<SessionState> };
 
 const CATEGORIES = ['Point', 'Line', 'Square', 'Cube'];
+
+function formatTime(seconds: number): string {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
 const ROUND_DURATION = 60; // seconds
 const TOTAL_SESSION_TIME = 240; // 4 minutes
 
@@ -177,7 +184,7 @@ function sessionReducer(state: SessionState, action: SessionAction): SessionStat
       if (!action.payload.trim()) return state;
       
       const newIdea: Idea = {
-        id: Date.now().toString(),
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
         text: action.payload.trim(),
         round: state.currentRound,
         category: state.currentCategory,
@@ -194,6 +201,16 @@ function sessionReducer(state: SessionState, action: SessionAction): SessionStat
         totalIdeas: newIdeas.length,
         currentRoundIdeas,
       };
+
+    case 'REMOVE_IDEA': {
+      const remaining = state.ideas.filter(idea => idea.id !== action.payload);
+      return {
+        ...state,
+        ideas: remaining,
+        totalIdeas: remaining.length,
+        currentRoundIdeas: remaining.filter(idea => idea.round === state.currentRound).length,
+      };
+    }
 
     case 'ADVANCE_ROUND': {
       if (state.currentRound >= 4) return state;
@@ -258,6 +275,10 @@ function sessionReducer(state: SessionState, action: SessionAction): SessionStat
     }
 
     case 'LOAD_PROMPTS':
+      // Keep a prompt restored from a saved session instead of re-rolling it.
+      if (state.currentPrompt) {
+        return { ...state, prompts: action.payload };
+      }
       return {
         ...state,
         prompts: action.payload,
@@ -294,8 +315,44 @@ interface SessionContextType {
   shufflePrompt: () => void;
   formatTime: (seconds: number) => string;
   exportToMarkdown: () => string;
+  removeIdea: (id: string) => void;
   saveSession: () => void;
   loadSession: () => void;
+}
+
+const STORAGE_KEY = 'ideationSession';
+
+function persist(state: SessionState) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      sessionTime: state.sessionTime,
+      currentRound: state.currentRound,
+      currentCategory: state.currentCategory,
+      ideas: state.ideas,
+      sessionStartTime: state.sessionStartTime,
+      totalIdeas: state.totalIdeas,
+      currentRoundIdeas: state.currentRoundIdeas,
+      currentPrompt: state.currentPrompt,
+      roundPrompts: state.roundPrompts,
+      isCompleted: state.isCompleted,
+    }));
+  } catch {
+    // Storage full or unavailable; the session still works in memory.
+  }
+}
+
+function readSaved(): Partial<SessionState> | null {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return null;
+    const parsed = JSON.parse(saved) as Partial<SessionState>;
+    // A session interrupted by a reload comes back paused, so the button reads "Resume".
+    const interrupted = !!parsed.sessionStartTime && !parsed.isCompleted;
+    return { ...parsed, isRunning: false, isPaused: interrupted };
+  } catch (error) {
+    console.error('Failed to load saved session:', error);
+    return null;
+  }
 }
 
 const SessionContext = createContext<SessionContextType | undefined>(undefined);
@@ -336,52 +393,41 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   // Save to localStorage whenever state changes
   useEffect(() => {
-    if (state.sessionStartTime) {
-      localStorage.setItem('ideationSession', JSON.stringify({
-        sessionTime: state.sessionTime,
-        currentRound: state.currentRound,
-        currentCategory: state.currentCategory,
-        ideas: state.ideas,
-        sessionStartTime: state.sessionStartTime,
-        totalIdeas: state.totalIdeas,
-        currentRoundIdeas: state.currentRoundIdeas,
-        currentPrompt: state.currentPrompt,
-        roundPrompts: state.roundPrompts,
-      }));
-    }
+    if (state.sessionStartTime) persist(state);
   }, [state]);
 
   // Load session from localStorage on mount
   useEffect(() => {
-    const saved = localStorage.getItem('ideationSession');
-    if (saved) {
-      try {
-        const savedState = JSON.parse(saved);
-        dispatch({ type: 'LOAD_SESSION', payload: savedState });
-      } catch (error) {
-        console.error('Failed to load saved session:', error);
-      }
-    }
+    const saved = readSaved();
+    if (saved) dispatch({ type: 'LOAD_SESSION', payload: saved });
   }, []);
+
+  // Show the countdown in the browser tab so it's visible from other tabs.
+  useEffect(() => {
+    const base = 'Rapid Ideation Trainer';
+    if (state.isCompleted) document.title = `Done! ${state.totalIdeas} idea${state.totalIdeas === 1 ? '' : 's'} · ${base}`;
+    else if (state.isRunning) document.title = `${formatTime(state.sessionTime)} · Round ${state.currentRound} · ${base}`;
+    else if (state.isPaused) document.title = `Paused ${formatTime(state.sessionTime)} · ${base}`;
+    else document.title = base;
+  }, [state.isCompleted, state.isRunning, state.isPaused, state.sessionTime, state.currentRound, state.totalIdeas]);
 
   const startTimer = () => dispatch({ type: 'START_TIMER' });
   const pauseTimer = () => dispatch({ type: 'PAUSE_TIMER' });
   const resumeTimer = () => dispatch({ type: 'RESUME_TIMER' });
   const resetSession = () => {
-    localStorage.removeItem('ideationSession');
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore
+    }
     dispatch({ type: 'RESET_SESSION' });
   };
   const addIdea = (idea: string) => dispatch({ type: 'ADD_IDEA', payload: idea });
+  const removeIdea = (id: string) => dispatch({ type: 'REMOVE_IDEA', payload: id });
   const setCurrentIdea = (idea: string) => dispatch({ type: 'SET_CURRENT_IDEA', payload: idea });
   const advanceRound = () => dispatch({ type: 'ADVANCE_ROUND' });
   const skipToNextRound = () => dispatch({ type: 'SKIP_TO_NEXT_ROUND' });
   const shufflePrompt = () => dispatch({ type: 'SHUFFLE_PROMPT' });
-
-  const formatTime = (seconds: number): string => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
 
   const exportToMarkdown = (): string => {
     const ideasByRound = CATEGORIES.reduce((acc, category, index) => {
@@ -405,7 +451,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       markdown += `**Prompt:** ${roundPrompt}\n\n`;
       
       if (roundData.ideas.length === 0) {
-        markdown += `(Round not completed)\n\n`;
+        markdown += `_(No ideas this round)_\n\n`;
       } else {
         roundData.ideas.forEach((idea, index) => {
           markdown += `${index + 1}. ${idea.text}\n`;
@@ -419,32 +465,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   };
 
   const saveSession = () => {
-    // Already handled by useEffect, but we can provide feedback
-    if (state.sessionStartTime) {
-      localStorage.setItem('ideationSession', JSON.stringify({
-        sessionTime: state.sessionTime,
-        currentRound: state.currentRound,
-        currentCategory: state.currentCategory,
-        ideas: state.ideas,
-        sessionStartTime: state.sessionStartTime,
-        totalIdeas: state.totalIdeas,
-        currentRoundIdeas: state.currentRoundIdeas,
-        currentPrompt: state.currentPrompt,
-        roundPrompts: state.roundPrompts,
-      }));
-    }
+    if (state.sessionStartTime) persist(state);
   };
 
   const loadSession = () => {
-    const saved = localStorage.getItem('ideationSession');
-    if (saved) {
-      try {
-        const savedState = JSON.parse(saved);
-        dispatch({ type: 'LOAD_SESSION', payload: savedState });
-      } catch (error) {
-        console.error('Failed to load saved session:', error);
-      }
-    }
+    const saved = readSaved();
+    if (saved) dispatch({ type: 'LOAD_SESSION', payload: saved });
   };
 
   return (
@@ -456,6 +482,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       resumeTimer,
       resetSession,
       addIdea,
+      removeIdea,
       setCurrentIdea,
       advanceRound,
       skipToNextRound,

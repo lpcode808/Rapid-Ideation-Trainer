@@ -176,6 +176,9 @@
   --ideation-warning: 15 74% 56%;
   --ideation-surface: 214 78% 12%;
   --ideation-background: 214 100% 8%;
+
+  /* Round 1 navy disappears on the dark surface; lift it. */
+  --round-1-color: 214 85% 58%;
 }
 
 @layer base {

@@ -27,6 +27,7 @@ export function PromptDisplay() {
         onClick={shufflePrompt}
         className="absolute right-4 top-4 rounded-md p-2 text-foreground/45 transition-all hover:bg-white/70 hover:text-ideation-primary dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"
         title="Get a new prompt"
+        aria-label="Get a new prompt"
       >
         <Shuffle className="w-4 h-4" />
       </button>
