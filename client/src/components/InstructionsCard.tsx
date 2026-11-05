@@ -10,7 +10,7 @@ export function InstructionsCard() {
       <div className="grid gap-4 text-sm text-foreground/75 md:grid-cols-2">
         <div className="space-y-3">
           <div className="flex items-start space-x-3">
-            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-ideation-primary text-xs font-semibold text-white">
+            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
               1
             </div>
             <div>
@@ -19,7 +19,7 @@ export function InstructionsCard() {
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-ideation-primary text-xs font-semibold text-white">
+            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
               2
             </div>
             <div>
@@ -30,7 +30,7 @@ export function InstructionsCard() {
         </div>
         <div className="space-y-3">
           <div className="flex items-start space-x-3">
-            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-ideation-primary text-xs font-semibold text-white">
+            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
               3
             </div>
             <div>
@@ -39,7 +39,7 @@ export function InstructionsCard() {
             </div>
           </div>
           <div className="flex items-start space-x-3">
-            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-ideation-primary text-xs font-semibold text-white">
+            <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
               4
             </div>
             <div>

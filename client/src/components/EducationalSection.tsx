@@ -62,7 +62,7 @@ export function EducationalSection() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-2xl border border-[rgba(0,53,113,0.16)] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,247,235,0.86))] p-4 shadow-sm dark:border-white/10 dark:bg-[rgba(255,255,255,0.06)]">
             <div className="mb-3 text-center">
-              <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-ideation-primary font-bold text-white">1</div>
+              <div className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">1</div>
               <h4 className="font-semibold text-ideation-primary">Point</h4>
               <p className="text-xs text-foreground/55">Propositional</p>
             </div>

@@ -30,18 +30,18 @@ export default function Home() {
 
             {state.isCompleted ? (
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-[rgba(0,19,41,0.22)] px-4 py-2 text-sm font-semibold text-white shadow-branded">
-                  <Trophy className="h-4 w-4 text-[hsl(var(--accent))]" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-white/70 px-4 py-2 text-sm font-semibold text-ideation-secondary shadow-branded dark:border-white/15 dark:bg-white/5 dark:text-white">
+                  <Trophy className="h-4 w-4 text-ideation-accent" />
                   Session complete
                 </div>
                 <div className="flex items-center gap-3">
-                  <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                  <h1 className="font-display text-4xl font-extrabold tracking-tight text-ideation-primary sm:text-5xl lg:text-6xl">
                     Great work.
                   </h1>
-                  <Sparkles className="hidden h-8 w-8 text-[hsl(var(--accent))] sm:block" />
+                  <Sparkles className="hidden h-8 w-8 text-ideation-accent sm:block" />
                 </div>
-                <p className="max-w-2xl text-base leading-7 text-white/78 sm:text-lg">
-                  You generated {state.totalIdeas} ideas in 4 minutes. The session report is ready below.
+                <p className="max-w-2xl text-base leading-7 text-foreground/70 sm:text-lg">
+                  You generated {state.totalIdeas} {state.totalIdeas === 1 ? 'idea' : 'ideas'} in 4 minutes. Copy or download your report below.
                 </p>
               </div>
             ) : (
@@ -62,10 +62,10 @@ export default function Home() {
         </header>
 
         <main
-          className={`relative overflow-hidden rounded-[2rem] border shadow-branded ${
+          className={`surface-bright relative overflow-hidden rounded-[2rem] border shadow-branded dark:bg-[rgba(4,11,22,0.92)] ${
             state.isCompleted
-              ? 'border-white/12 bg-[linear-gradient(180deg,rgba(0,19,41,0.92),rgba(0,53,113,0.88))] text-white'
-              : 'surface-bright border-[hsl(var(--border))] dark:border-white/10 dark:bg-[rgba(4,11,22,0.92)]'
+              ? 'border-ideation-accent'
+              : 'border-[hsl(var(--border))] dark:border-white/10'
           }`}
         >
           <div
@@ -99,7 +99,8 @@ export default function Home() {
             <iframe
               className="absolute inset-0 h-full w-full"
               src="https://www.youtube.com/embed/fXIeFJCqsPs"
-              title="YouTube video player"
+              title="Rapid ideation video"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               data-testid="video-player"
@@ -107,15 +108,11 @@ export default function Home() {
           </div>
         </div>
 
-        <footer
-          className={`pb-2 text-center text-sm ${
-            state.isCompleted ? 'text-white/75' : 'text-foreground/55'
-          }`}
-        >
+        <footer className="pb-2 text-center text-sm text-foreground/55">
           <p>Built for rapid creativity training • Session data saved locally</p>
           {state.isCompleted && (
-            <p className="mt-2 font-medium text-white">
-              Ready for another round? Reset to start again.
+            <p className="mt-2 font-medium text-foreground/80">
+              Ready for another round? Hit “New session” at the top.
             </p>
           )}
         </footer>

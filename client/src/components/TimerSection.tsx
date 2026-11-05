@@ -12,6 +12,17 @@ export function TimerSection() {
     }
   };
 
+  const handleReset = () => {
+    if (
+      state.ideas.length > 0 &&
+      !state.isCompleted &&
+      !window.confirm(`Reset the session? Your ${state.ideas.length} idea${state.ideas.length === 1 ? '' : 's'} will be cleared.`)
+    ) {
+      return;
+    }
+    resetSession();
+  };
+
   const progress = ((240 - state.sessionTime) / 240) * 100;
   
   const getProgressBarColor = () => {
@@ -28,17 +39,24 @@ export function TimerSection() {
     <div className="mb-8">
       <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center space-x-4">
-          <div className="font-display text-3xl font-extrabold tracking-tight text-ideation-primary">
+          <div
+            className={`font-display text-3xl font-extrabold tabular-nums tracking-tight ${
+              state.isRunning && state.sessionTime <= 10 ? 'text-ideation-warning' : 'text-ideation-primary'
+            }`}
+            role="timer"
+            aria-label={`${formatTime(state.sessionTime)} remaining`}
+          >
             {formatTime(state.sessionTime)}
           </div>
           <div className="text-sm font-semibold uppercase tracking-[0.18em] text-foreground/55">
-            Session time
+            {state.isCompleted ? 'Finished' : state.isPaused ? 'Paused' : 'Session time'}
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          {!state.isCompleted && (
           <button
             onClick={handleToggleTimer}
-            className="inline-flex items-center gap-2 rounded-full bg-ideation-primary px-4 py-2.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
           >
             {state.isRunning ? (
               <Pause className="w-4 h-4" />
@@ -47,21 +65,26 @@ export function TimerSection() {
             )}
             <span>{state.isRunning ? 'Pause' : (state.isPaused ? 'Resume' : 'Start')}</span>
           </button>
-          {state.currentRound < 4 && (
+          )}
+          {state.currentRound < 4 && !state.isCompleted && (
             <button
               onClick={skipToNextRound}
               className="inline-flex items-center gap-1.5 rounded-full bg-ideation-warning px-3.5 py-2.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
-              title="Skip to next round (testing)"
+              title="Skip to next round"
+              aria-label="Skip to next round"
             >
               <SkipForward className="w-4 h-4" />
               <span className="hidden sm:inline text-sm">Skip</span>
             </button>
           )}
           <button
-            onClick={resetSession}
-            className="inline-flex items-center justify-center rounded-full border border-[hsl(var(--border))] bg-white/80 px-4 py-2.5 text-ideation-secondary shadow-sm transition-all hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-white"
+            onClick={handleReset}
+            title="Reset session"
+            aria-label="Reset session"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-[hsl(var(--border))] bg-white/80 px-4 py-2.5 text-ideation-secondary shadow-sm transition-all hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-white"
           >
             <RotateCcw className="w-4 h-4" />
+            {state.isCompleted && <span className="font-semibold">New session</span>}
           </button>
         </div>
       </div>

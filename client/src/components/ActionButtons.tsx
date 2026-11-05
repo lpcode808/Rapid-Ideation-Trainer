@@ -95,7 +95,7 @@ export function ActionButtons() {
       
       <button
         onClick={handleDownload}
-        className="flex items-center justify-center gap-2 rounded-full bg-ideation-secondary px-6 py-3.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
+        className="flex items-center justify-center gap-2 rounded-full bg-foreground px-6 py-3.5 font-semibold text-background shadow-sm transition-all hover:-translate-y-0.5 hover:opacity-95"
       >
         <Download className="w-4 h-4" />
         <span>Download .md</span>
